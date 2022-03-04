@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `baskets`
+-- Структура таблицы `cart`
 --
 
-CREATE TABLE `baskets` (
+CREATE TABLE `cart` (
   `id` smallint(5) NOT NULL COMMENT 'id записи корзины',
   `userid` smallint(5) NOT NULL COMMENT 'id пользователя',
   `productid` smallint(5) NOT NULL COMMENT 'id продукта',
@@ -39,9 +39,9 @@ CREATE TABLE `baskets` (
 --
 
 --
--- Индексы таблицы `baskets`
+-- Индексы таблицы `cart`
 --
-ALTER TABLE `baskets`
+ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `userid` (`userid`,`productid`);
 
@@ -50,9 +50,9 @@ ALTER TABLE `baskets`
 --
 
 --
--- AUTO_INCREMENT для таблицы `baskets`
+-- AUTO_INCREMENT для таблицы `cart`
 --
-ALTER TABLE `baskets`
+ALTER TABLE `cart`
   MODIFY `id` smallint(5) NOT NULL AUTO_INCREMENT COMMENT 'id записи корзины';
 COMMIT;
 
