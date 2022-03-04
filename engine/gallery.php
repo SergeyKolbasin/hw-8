@@ -67,7 +67,7 @@ function getImage($id)
 /** Функция возвращает HTML-код отображения страницы фото из БД по его id
  *
  * @param   integer     $id     Идентификатор отображаемой фотографии
- * @return  array               HTML-код отображения страницы с фото
+ * @return  string               HTML-код отображения страницы с фото
  */
 function showImage($id)
 {
@@ -184,7 +184,7 @@ function deleteProduct($id): bool
 function mainMenu()
 {
     // показать в меню вход или выход
-    if (!isset($_SESSION['login'])) {
+    if (empty($_SESSION['login'])) {
         echo '<ul><li><a href="login.php">Войти</a></li></ul>';
     } else {
         echo 'Вы вошли как <i>' . $_SESSION['login']['description'] . '</i>';
@@ -213,6 +213,55 @@ function insertProductBasket($id)
         $sql = "INSERT INTO `baskets`(`userid`, `productid`, `amount`) VALUES ('$userid', '$productid', 1)";
     }
     // добавление в корзину
+    if (execQuery($sql)!=false) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/** Удаление товара из корзины
+ * @param   integer   $id       Идентификатор определенного товара в корзине
+ * @return  boolean             Результат удаления
+ */
+function deleteBasketItem($id): bool
+{
+    $db = createConnection();
+    $id = (int)$id;
+    $sql = "DELETE FROM `baskets` WHERE `id`=$id";
+    return execQuery($sql, $db);
+}
+
+/** Получение выборки по определенному товару из корзины
+ * @param   integer     $id         Идентификатор товара в корзине
+ * @param   integer     $userid     Идентификатор юзера
+ * @param   integer     $amount     Количество товара
+ * @return  array           Результат выборки или NULL
+ */
+function getBasketItem($id, $userid)
+{
+    $db = createConnection();
+    $id = (int)$id;
+    // Выборка с именем юзера
+    $sql= "SELECT baskets.id, baskets.productid, gallery.name, gallery.url, gallery.price, baskets.amount, users.description
+	        FROM baskets
+    	        INNER JOIN users ON users.id=$userid
+    	        INNER JOIN gallery ON (baskets.productid=gallery.id) AND (baskets.id=$id)";
+    return getSingle($sql);
+}
+
+/** Изменениее количества определенного товара в корзине
+ * @param   integer     $id         Идентификатор записи о товаре в корзине
+ * @param   integer     $amount     Количество товара
+ * @return  boolean           Результат выполнения запроса
+ */
+function insertBasketItem($id, $amount)
+{
+    $db = createConnection();
+    $id = (int)$id;
+    //$sql = "INSERT INTO `baskets.amount` VALUES $amount WHERE `id`=$id";
+    $sql = "UPDATE `baskets` SET `amount`='$amount' WHERE `id`=$id";
+    // Изменение в корзине
     if (execQuery($sql)!=false) {
         return true;
     } else {
