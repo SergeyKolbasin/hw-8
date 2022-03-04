@@ -3,6 +3,7 @@
  * Вход в систему
  */
 require_once '../config/config.php';
+/*
 // Получаем логин, пароль
 $login = $_POST['login'] ?? false;
 $password = $_POST['password'] ?? false;
@@ -12,7 +13,7 @@ if ($login && $password) {
     $user = getSingle($sql);
     // Если пользователь найден и введенный пароль совпадает с его хэшем из БД
     if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['login'] = $user;
+        $_SESSION['login'] = $user;                               // запсь в сессию пользователя
         if (isset($_SESSION['login'])) {
             header('location: editUser.php?id=' . $user['id']);   // перенаправим юзера в его личный кабинет
             //header('location: ' . $_SESSION['originalURL']);    // возврат на прежнее место сайта
@@ -27,6 +28,7 @@ if ($login && $password) {
 } else {
     echo 'Не введены логин и/или пароль!';
 }
+*/
 ?>
 
 <html lang="ru">
@@ -38,13 +40,17 @@ if ($login && $password) {
 <body>
 <h3>Вход в систему</h3>
 <hr>
-<form method="post" action="login.php">
+<div>
     <p><label>Пользователь:  <input type="text" name="login"></label></p>
     <p><label>Пароль: <input type="password" name="password"></label></p>
-    <p><input type="submit" value="Войти"></p>
-</form>
+    <button onclick="login()">Войти</button>
+    <br><br>
+</div>
 <a href="gallery.php"><< В зоопарк</a><br>
 <a href="index.php">На главную</a>
 <br><br>
+
+<script src="js/jquery-3.6.0.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
