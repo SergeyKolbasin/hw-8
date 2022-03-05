@@ -41,10 +41,10 @@ if ($login && $password) {
 <h3>Вход в систему</h3>
 <hr>
 <div>
-    <p><label>Пользователь:  <input type="text" name="login"></label></p>
-    <p><label>Пароль: <input type="password" name="password"></label></p>
-    <button onclick="login()">Войти</button>
-    <br><br>
+        <p><label>Пользователь:  <input type="text" name="login"></label></p>
+        <p><label>Пароль: <input type="password" name="password"></label></p>
+        <button onclick="login()">Войти</button>
+        <br><br>
 </div>
 <a href="gallery.php"><< В зоопарк</a><br>
 <a href="index.php">На главную</a>
