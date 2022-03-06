@@ -86,7 +86,7 @@ function editUser($id, $password, $description, $address, $email, $photo): int
     $db = createConnection();
     // Защита
     $id = realEscape($db, $id);
-    $password = $password = password_hash(realEscape($db, $password), PASSWORD_DEFAULT);
+    $password = password_hash(realEscape($db, $password), PASSWORD_DEFAULT);
     $description = realEscape($db, $description);
     $address = realEscape($db, $address);
     $email = realEscape($db, $email);
