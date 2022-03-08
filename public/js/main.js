@@ -22,11 +22,40 @@ function login() {
             console.log(data);
             // без json
             if (data === 'OK') {
-                location.reload();          // перезагружаем страницу
+                //window.location.href = '/editUser.php?id=';
+                //alert('123');
+                alert("$.cookie(id)");
+                //window.location.href = '/index.php';            // переход на главную страницу
             } else {
                 $message_field.text(data);  // сообщение об ошибке
             }
         }
     });
 
+}
+
+// Функция добавления в корзину
+function insertToCart(id) {
+    //Инициализируем поле для сообщений
+    const $message_field = $('.message');
+
+    $.get({
+        url: '/api.php',
+        data: {
+            apiMethod: 'insertToCart',
+            getData: {
+                id: id
+            }
+        },
+        success: function (data) {
+            if(data === 'OK') {
+                $message_field.text('Товар добавлен в корзину');
+            } else {
+                $message_field.text(data);
+            }
+            setTimeout(function () {
+                $message_field.text('');
+            }, 1000);
+        }
+    })
 }

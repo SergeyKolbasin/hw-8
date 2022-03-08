@@ -1,4 +1,10 @@
-<!-- Изображение -->
+<?php
+/*
+ * Отображение товара
+ */
+require_once '../config/config.php';
+?>
+
 <!doctype>
 <html lang="ru">
 <head>
@@ -15,7 +21,8 @@
     <header>
         <a href="editProduct.php?id={{ID}}">Редактировать</a>&nbsp
         <a href="deleteProduct.php?id={{ID}}">Удалить</a>&nbsp
-        <a href="insertProductBasket.php?id={{ID}}">В корзину</a>
+        <!--<a href="insertProductBasket.php?id={{ID}}">В корзину</a>-->
+        <button onclick="insertToCart()">Купить</button>
     </header>
     <h3>{{NAME}}</h3>
     <div class="container">
@@ -29,5 +36,7 @@
         </div>
     </div>
     <br>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
