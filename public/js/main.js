@@ -1,3 +1,19 @@
+// Функция получения значения куки по ее имени
+function readCookie(name) {
+    var name_cookie = name+"=";
+    var spl = document.cookie.split(";");
+    for(var i=0; i<spl.length; i++) {
+        var c = spl[i];
+        while(c.charAt(0) == " ") {
+            c = c.substring(1, c.length);
+        }
+        if(c.indexOf(name_cookie) == 0) {
+            return c.substring(name_cookie.length, c.length);
+        }
+    }
+    return null;
+}
+
 // Функция авторизации с ajax
 function login() {
     //Получаем значение login и password
@@ -21,13 +37,12 @@ function login() {
         success: function (data) {
             console.log(data);
             // без json
+            // контроль удачной/неудачной аутентификации
             if (data === 'OK') {
-                //window.location.href = '/editUser.php?id=';
-                //alert('123');
-                alert("$.cookie(id)");
-                //window.location.href = '/index.php';            // переход на главную страницу
+                window.location.href = '/editUser.php?id=' + readCookie('id');
             } else {
                 $message_field.text(data);  // сообщение об ошибке
+                //window.location.href = '/index.php';            // переход на главную страницу
             }
         }
     });
