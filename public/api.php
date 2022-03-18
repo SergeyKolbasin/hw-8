@@ -38,14 +38,6 @@ if ($_POST['apiMethod'] === 'login') {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['login'] = $user;
         setcookie('id', $user['id'], time()+3600);
-/*
-        if (isset($_SESSION['login'])) {
-            header('location: editUser.php?id=' . $user['id']);   // перенаправим юзера в его личный кабинет
-            //header('location: ' . $_SESSION['originalURL']);    // возврат на прежнее место сайта
-        }else{
-            header('location: index.php');                      // возврат на стартовую страницу
-        }
-*/
         success();
     } else {
         error('неверная пара логин/пароль');

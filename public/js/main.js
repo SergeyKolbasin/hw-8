@@ -36,7 +36,6 @@ function login() {
         },
         success: function (data) {
             console.log(data);
-            // без json
             // контроль удачной/неудачной аутентификации
             if (data === 'OK') {
                 window.location.href = '/editUser.php?id=' + readCookie('id');
