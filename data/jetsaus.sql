@@ -51,10 +51,10 @@ INSERT INTO `baskets` (`id`, `userid`, `productid`, `amount`, `last_action`) VAL
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `cart`
+-- Структура таблицы `basket`
 --
 
-CREATE TABLE `cart` (
+CREATE TABLE `basket` (
   `id` smallint(5) NOT NULL COMMENT 'id записи корзины',
   `userid` smallint(5) NOT NULL COMMENT 'id пользователя',
   `productid` smallint(5) NOT NULL COMMENT 'id продукта',
@@ -63,10 +63,10 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Корзина покупателя';
 
 --
--- Дамп данных таблицы `cart`
+-- Дамп данных таблицы `basket`
 --
 
-INSERT INTO `cart` (`id`, `userid`, `productid`, `amount`, `last_action`) VALUES
+INSERT INTO `basket` (`id`, `userid`, `productid`, `amount`, `last_action`) VALUES
 (4, 7, 1, 1, '2022-02-04 15:20:36'),
 (13, 3, 13, 3, '2022-02-11 13:25:32'),
 (14, 3, 1, 2, '2022-02-24 13:13:39'),
@@ -227,9 +227,9 @@ ALTER TABLE `baskets`
   ADD UNIQUE KEY `userid` (`userid`,`productid`);
 
 --
--- Индексы таблицы `cart`
+-- Индексы таблицы `basket`
 --
-ALTER TABLE `cart`
+ALTER TABLE `basket`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `userid` (`userid`,`productid`);
 
@@ -274,9 +274,9 @@ ALTER TABLE `baskets`
   MODIFY `id` smallint(5) NOT NULL AUTO_INCREMENT COMMENT 'id записи корзины', AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT для таблицы `cart`
+-- AUTO_INCREMENT для таблицы `basket`
 --
-ALTER TABLE `cart`
+ALTER TABLE `basket`
   MODIFY `id` smallint(5) NOT NULL AUTO_INCREMENT COMMENT 'id записи корзины', AUTO_INCREMENT=21;
 
 --

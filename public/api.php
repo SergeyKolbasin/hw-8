@@ -45,20 +45,21 @@ if ($_POST['apiMethod'] === 'login') {
 }
 
 // Обработка добавления в корзину
-if($_GET['apiMethod'] === 'insertToCart') {
-    $id = $_GET['postData']['id'] ?? 0;
+if($_POST['apiMethod'] === 'insertToBasket') {
+    var_dump($_POST);
+    $id = $_POST['postData']['id'] ?? 0;
     if(!$id) {
         error('ID не передан');
     }
     //Получаем данные корзины
-    $cart = $_COOKIE['cart'] ?? [];
+    $basket = $_COOKIE['basket'] ?? [];
     //если в корзине товара еще нет, то получаем 0
-    $count = $cart[$id] ?? 0;
+    $count = $basket[$id] ?? 0;
     //увеличиваем количество в корзине
     $count++;
 
     //устанавливаем новое куки
-    setcookie("cart[$id]", $count);
+    setcookie("basket[$id]", $count);
 
     success();
 }

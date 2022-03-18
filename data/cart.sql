@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `cart`
+-- Структура таблицы `basket`
 --
 
-CREATE TABLE `cart` (
+CREATE TABLE `basket` (
   `id` smallint(5) DEFAULT NULL COMMENT 'id покупки',
   `id_product` smallint(5) NOT NULL COMMENT 'id товара',
   `id_user` smallint(5) NOT NULL COMMENT 'id пользователя',

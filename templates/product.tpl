@@ -22,7 +22,7 @@ require_once '../config/config.php';
         <a href="editProduct.php?id={{ID}}">Редактировать</a>&nbsp
         <a href="deleteProduct.php?id={{ID}}">Удалить</a>&nbsp
         <!--<a href="insertProductBasket.php?id={{ID}}">В корзину</a>-->
-        <button onclick="insertToCart()">Купить</button>
+        <button onclick="insertToBasket({{ID}})">Купить</button>
     </header>
     <h3>{{NAME}}</h3>
     <div class="container">

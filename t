@@ -20,7 +20,7 @@ commit 39038323fdebbf176e6bf28629af4ce468cfcb13
 Author: jetsaus <jetsaus@gmail.com>
 Date:   Fri Mar 4 23:10:22 2022 +0800
 
-    Таблица корзины baskets переименована в cart,
+    Таблица корзины baskets переименована в basket,
     текст обращений в скриптах тоже переименован
 
 commit cedf2fab900ebc80e6772b0958421c113fc7f18d

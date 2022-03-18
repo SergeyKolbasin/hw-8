@@ -49,15 +49,15 @@ function login() {
 }
 
 // Функция добавления в корзину
-function insertToCart(id) {
+function insertToBasket(id) {
     //Инициализируем поле для сообщений
     const $message_field = $('.message');
 
-    $.get({
+    $.post({
         url: '/api.php',
         data: {
-            apiMethod: 'insertToCart',
-            getData: {
+            apiMethod: 'insertToBasket',
+            postData: {
                 id: id
             }
         },
@@ -67,9 +67,6 @@ function insertToCart(id) {
             } else {
                 $message_field.text(data);
             }
-            setTimeout(function () {
-                $message_field.text('');
-            }, 1000);
         }
     })
 }
