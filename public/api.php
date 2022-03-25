@@ -12,7 +12,7 @@ function error($error_text)
 function success($data = true)
 {
     // без json
-    echo 'OK';
+    echo "OK";
     exit();
 }
 
@@ -46,7 +46,7 @@ if ($_POST['apiMethod'] === 'login') {
 
 // Обработка добавления в корзину
 if($_POST['apiMethod'] === 'insertToBasket') {
-    var_dump($_POST);
+    //var_dump($_POST);
     $id = $_POST['postData']['id'] ?? 0;
     if(!$id) {
         error('ID не передан');

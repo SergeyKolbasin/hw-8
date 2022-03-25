@@ -62,6 +62,7 @@ function insertToBasket(id) {
             }
         },
         success: function (data) {
+            console.log(data);
             if(data === 'OK') {
                 //$message_field.text('Товар добавлен в корзину');
                 alert("Товар добавлен в корзину");
