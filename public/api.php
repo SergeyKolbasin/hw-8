@@ -37,7 +37,7 @@ if ($_POST['apiMethod'] === 'login') {
     // Если существует такая пара логин/пароль, запишем в сессию, если нет - ошибка
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['login'] = $user;
-        setcookie('id', $user['id'], time()+3600);
+        setcookie('user', $user['id'], time()+3600);
         success();
     } else {
         error('неверная пара логин/пароль');

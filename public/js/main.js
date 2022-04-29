@@ -1,17 +1,8 @@
 // Функция получения значения куки по ее имени
-function readCookie(name) {
-    var name_cookie = name+"=";
-    var spl = document.cookie.split(";");
-    for(var i=0; i<spl.length; i++) {
-        var c = spl[i];
-        while(c.charAt(0) == " ") {
-            c = c.substring(1, c.length);
-        }
-        if(c.indexOf(name_cookie) == 0) {
-            return c.substring(name_cookie.length, c.length);
-        }
-    }
-    return null;
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp("(?:^|; )" +
+        name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
 // Функция авторизации с ajax
@@ -38,7 +29,8 @@ function login() {
             //console.log(data);
             // контроль удачной/неудачной аутентификации
             if (data === 'OK') {
-                window.location.href = '/editUser.php?id=' + readCookie('id');
+                userID = getCookie('user');
+                window.location.href = '/editUser.php?id=' + userID;
             } else {
                 $message_field.text(data);  // сообщение об ошибке
                 //window.location.href = '/index.php';            // переход на главную страницу
