@@ -35,7 +35,7 @@ function login() {
             }
         },
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             // контроль удачной/неудачной аутентификации
             if (data === 'OK') {
                 window.location.href = '/editUser.php?id=' + readCookie('id');
@@ -47,7 +47,6 @@ function login() {
     });
 
 }
-
 // Функция добавления в корзину
 function insertToBasket(id) {
     //Инициализируем поле для сообщений
